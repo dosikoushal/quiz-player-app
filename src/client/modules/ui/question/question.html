@@ -1,4 +1,9 @@
 <template>
+    <div class="progress-bar" aria-valuemin="0" aria-valuemax="100" aria-valuenow={progress} role="progressbar">
+        <span class="progress-bar__value" style={progressBarStyle}>
+            <span class="assistive-text">Progress: {progress}%</span>
+        </span>
+    </div>
     <div class="question-label">{question.label}</div>
     <div class="answers">
         <div class="answer">
