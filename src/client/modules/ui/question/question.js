@@ -4,6 +4,7 @@ const TIMER_INTERVAL_MS = 20;
 
 export default class Question extends LightningElement {
     @api question;
+    @api duration = 6;
     isSaving;
     progress = 0;
     progressBarStyle = '';
@@ -32,6 +33,8 @@ export default class Question extends LightningElement {
     }
 
     connectedCallback() {
+        this.isSaving = false; //original code
+
         const durationMs = this.duration * 1000;
         let elapsedMs = 0;
         // eslint-disable-next-line @lwc/lwc/no-async-operation
