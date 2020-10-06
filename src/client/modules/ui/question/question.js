@@ -40,7 +40,7 @@ export default class Question extends LightningElement {
             const progressPercent = elapsedMs / durationMs;
             this.progress = Math.floor(100 * progressPercent);
             const color = this.getColor(progressPercent);
-            this.progressBarStyle = `width: ${this.progress}%; background-color: ${color};`;
+            this.progressBarStyle = 'width: ${this.progress}%; background-color: ${color};';
             if (this.progress >= 100) {
                 this.progress = 100;
                 clearInterval(this.timerId);
