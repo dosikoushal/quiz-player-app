@@ -7,7 +7,7 @@
 Click on this button and follow the instructions to deploy the app:
 
 <p align="center">
-  <a href="https://heroku.com/deploy?template=https://github.com/fostive/quiz-player-app/edit/master">
+  <a href="https://heroku.com/deploy?template=https://github.com/dosikoushal/quiz-player-app/edit/master">
     <img src="https://www.herokucdn.com/deploy/button.svg" alt="Deploy">
   </a>
 <p>
