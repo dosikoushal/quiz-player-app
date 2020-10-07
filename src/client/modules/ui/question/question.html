@@ -1,7 +1,10 @@
 <template>
-    <div class="question-time">00:
-        {remainingTime}
-    </div>
+    <template if:true={isSingleDigit}>
+        <div class="question-time">00:0{remainingTime}</div>
+    </template>
+    <template if:false={isSingleDigit}>
+        <div class="question-time">00:{remainingTime}</div>
+    </template>
 
     <div class="question-label">{question.label}</div>
     <div class="answers">
