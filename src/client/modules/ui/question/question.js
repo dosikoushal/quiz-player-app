@@ -4,12 +4,9 @@ const TIMER_INTERVAL_MS = 1000;
 
 export default class Question extends LightningElement {
     @api question;
-    @api duration = 6;
     isSaving;
-    progress = 0;
-    progressBarStyle = '';
-    timerId;
-    remainingTime = 20;
+    remainingTime;
+    isSingleDigit;
 
     /* Original code
     connectedCallback() {
@@ -35,9 +32,8 @@ export default class Question extends LightningElement {
 
     connectedCallback() {
         this.isSaving = false; //original code
-
-        //const durationMs = this.duration * 1000;
-        //let elapsedMs = 0;
+        this.remainingTime = 20;
+        this.isSingleDigit = false;
         // eslint-disable-next-line @lwc/lwc/no-async-operation
         
         this.timerId = setInterval(() => {
@@ -46,23 +42,10 @@ export default class Question extends LightningElement {
                 clearInterval(this.timerId);
                 this.dispatchEvent(new CustomEvent('timeout'));
             }
-
-            /*elapsedMs += TIMER_INTERVAL_MS;
-            const progressPercent = elapsedMs / durationMs;
-            this.progress = Math.floor(100 * progressPercent);
-            const color = this.getColor(progressPercent);
-            this.progressBarStyle = 'width: ${this.progress}%; background-color: ${color};';
-            if (this.progress >= 100) {
-                this.progress = 100;
-                clearInterval(this.timerId);
-                this.dispatchEvent(new CustomEvent('timeout'));
-            }*/
+            if(this.remainingTime < 10) {
+                this.isSingleDigit = true;
+            }
         }, TIMER_INTERVAL_MS);
-    }
-
-    getColor(percent) {
-        const hue = ((1 - percent) * 120).toString(10);
-        return 'hsl(${hue}, 100%, 50%)';
     }
 
     disconnectedCallback() {
