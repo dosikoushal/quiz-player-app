@@ -1,6 +1,6 @@
 import { LightningElement, api } from 'lwc';
 
-const TIMER_INTERVAL_MS = 20;
+const TIMER_INTERVAL_MS = 1000;
 
 export default class Question extends LightningElement {
     @api question;
@@ -9,6 +9,7 @@ export default class Question extends LightningElement {
     progress = 0;
     progressBarStyle = '';
     timerId;
+    remainingTime = 20;
 
     /* Original code
     connectedCallback() {
@@ -39,7 +40,13 @@ export default class Question extends LightningElement {
         let elapsedMs = 0;
         // eslint-disable-next-line @lwc/lwc/no-async-operation
         this.timerId = setInterval(() => {
-            elapsedMs += TIMER_INTERVAL_MS;
+            this.remainingTime--;
+            if (this.remainingTime <= 0) {
+                clearInterval(this.timerId);
+                this.dispatchEvent(new CustomEvent('timeout'));
+            }
+
+            /*elapsedMs += TIMER_INTERVAL_MS;
             const progressPercent = elapsedMs / durationMs;
             this.progress = Math.floor(100 * progressPercent);
             const color = this.getColor(progressPercent);
@@ -48,7 +55,7 @@ export default class Question extends LightningElement {
                 this.progress = 100;
                 clearInterval(this.timerId);
                 this.dispatchEvent(new CustomEvent('timeout'));
-            }
+            }*/
         }, TIMER_INTERVAL_MS);
     }
 
