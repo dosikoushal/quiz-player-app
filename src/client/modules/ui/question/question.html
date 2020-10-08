@@ -1,13 +1,13 @@
 <template>
     <template if:true={isSingleDigit}>
         <div class="question-time">
-            <img src="resources/logo.png" alt="App logo" />
+            <img src="resources/timer.jpg" alt="Timer" />
             00:0{remainingTime}
         </div>
     </template>
     <template if:false={isSingleDigit}>
         <div class="question-time">
-            <img src="resources/logo.png" alt="App logo" />
+            <img src="resources/timer.jpg" alt="Timer" />
             00:{remainingTime}
         </div>
     </template>
