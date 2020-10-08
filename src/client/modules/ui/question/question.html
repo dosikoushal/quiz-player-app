@@ -1,8 +1,10 @@
 <template>
     <template if:true={isSingleDigit}>
+        <img src="resources/logo.png" alt="App logo" />
         <div class="question-time">00:0{remainingTime}</div>
     </template>
     <template if:false={isSingleDigit}>
+        <img src="resources/logo.png" alt="App logo" />
         <div class="question-time">00:{remainingTime}</div>
     </template>
 
